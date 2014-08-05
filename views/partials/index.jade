@@ -1,7 +1,15 @@
 h1 Welcome to the bitcoin page
 p This is where we are going to create an invoice for you to make a payment using bitcoins
-label(for='price') This is where the user can type in the price 
-	input(type='text' id='price')
+label This is where the user can type in the price 
+	input(type='text' ng-model='invoicePrice')
+p You currently owe ${{invoicePrice}}
+label Please include your name
+	input(type='text' ng-model='name')
+p Your name is {{personName}}
+label Please include a short message
+	input(type='text' ng-model='message')
+button(ng-click='pay()')
+p Your message is as follows {{message}}
 p The page must display a <strong>new wallet </strong> and <strong>QR code</strong> on each transaction
 p Let's go!
 p Include a BTC/USD exchange rate
