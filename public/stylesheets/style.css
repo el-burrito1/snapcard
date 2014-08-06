@@ -6,3 +6,40 @@ body {
 a {
   color: #00B7FF;
 }
+
+.pageTitle{
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.center-col{
+	float: none;
+	margin: 0 auto;
+}
+
+.center-btn{
+	margin-top: 25px;
+	float: left;
+	margin-left: 50px;
+}
+
+.timer{
+	border-bottom: 1px solid blue;
+	-webkit-animation: timer 180s;
+	animation: 180s;
+}
+
+@-webkit-keyframes timer{
+	from {width: 100%;}
+	to {width: 0%;}
+}
+
+@keyframes timer{
+	from {width: 100%;}
+	to {width: 0%;}
+}
+
+.displayNone{
+	display: none;
+}
+

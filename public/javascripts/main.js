@@ -1,10 +1,10 @@
 'use strict'
 
-var app = angular.module('myApp' , ['ngRoute' , 'myApp.controllers']);
+var app = angular.module('myApp' , ['ngRoute' , 'myApp.controllers' , 'monospaced.qrcode']);
 
-app.config(['$httpProvider' , function($httpProvider){
-	delete $httpProvider.defaults.headers.common['X-Requested-With'];
-}]);
+app.config(function($httpProvider){
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+});
 
 app.config(['$routeProvider' , function ($routeProvider){
 	$routeProvider.when('/' , {
@@ -13,5 +13,9 @@ app.config(['$routeProvider' , function ($routeProvider){
 	}).when('/thanks' , {
 		templateUrl: 'partials/thanks',
 		controller: 'mainControl'
-	}).otherwise({redirectTo: '/'})
+	}).when('/markup' , {
+		templateUrl: 'partials/markup',
+		controller: 'mainControl'
+	})
+	.otherwise({redirectTo: '/'})
 }]);

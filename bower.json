@@ -1,0 +1,19 @@
+{
+  "name": "snapcard",
+  "version": "0.0.0",
+  "homepage": "https://github.com/spencerspiegel/snapcard",
+  "description": "bitcoin invoice app",
+  "main": "/Users/spencer/documents/bitcoinProjects/snapcard",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.21",
+    "angular-qrcode": "~3.1.0"
+  }
+}
