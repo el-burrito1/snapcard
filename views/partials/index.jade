@@ -3,7 +3,8 @@ div(class='row' ng-init='exchangeRate()')
 		h1(class='pageTitle') Bitcoin Invoice
 		div(class='text-center')
 			qrcode(class='qr' data='bitcoin:{{token}}?amount={{btc}}' size='200')
-			div(class='before' ng-hide='partial || full')
+			i(class="fa fa-circle-o-notch fa-spin" ng-hide='!load')
+			div(class='before' ng-hide='partial || full || load')
 				label Amount BTC:    
 					input(type='text' ng-model='btc' style='margin-left:30px')
 				br
@@ -18,7 +19,7 @@ div(class='row' ng-init='exchangeRate()')
 				h3 Partially paid. You still owe {{10-btc}} BTC.
 			div(class='fullPay' ng-show='full')
 				h3 You have paid in full. Thank you. 
-		div(class='text-center' ng-hide='partial || full')
+		div(class='text-center' ng-hide='partial || full || load')
 			button(type='button' class='btn center-btn' ng-click='getAddress();showQR()') CREATE PAYMENT INVOICE
 	div(class='col-md-4 center-col' ng-show='expired')
 		h1(class='pageTitle') I'm sorry but this session has expired, please refresh the page to make a payment.

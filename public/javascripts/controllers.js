@@ -7,6 +7,7 @@ angular.module('myApp.controllers' , []).
 		$scope.expired = false;
 		$scope.partial = false;
 		$scope.full = false;
+		$scope.load = true;
 
 		$scope.btc = 0;
 		$scope.invoiceAmount = 10;
@@ -15,6 +16,7 @@ angular.module('myApp.controllers' , []).
 		$http.get('https://jsonp.nodejitsu.com/?url=https%3A%2F%2Fcoinbase.com%2Fapi%2Fv1%2Fcurrencies%2Fexchange_rates').
 		  then(function(response,status,headers,config){        
 		  	$scope.exchangeRate = (parseFloat(response.data.btc_to_usd)).toFixed(2);
+		  	$scope.load = false;
 		  },
 		  function(data,status,headers,config){
 		      console.log('error');
@@ -54,7 +56,7 @@ angular.module('myApp.controllers' , []).
 			},30000)
 		};
 
-		expire();
+		// expire();
 
 
 	}])
