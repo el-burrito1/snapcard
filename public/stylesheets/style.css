@@ -19,8 +19,8 @@ a {
 
 .center-btn{
 	margin-top: 25px;
-	float: left;
-	margin-left: 50px;
+/*	float: left;
+	margin-left: 50px;*/
 }
 
 .timer{
@@ -41,5 +41,13 @@ a {
 
 .displayNone{
 	display: none;
+}
+
+.qr{
+	display: none;
+}
+
+.qr.show{
+	display: block;
 }
 

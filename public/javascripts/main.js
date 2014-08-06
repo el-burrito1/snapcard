@@ -10,12 +10,5 @@ app.config(['$routeProvider' , function ($routeProvider){
 	$routeProvider.when('/' , {
 		templateUrl: 'partials/index',
 		controller: 'mainControl'
-	}).when('/thanks' , {
-		templateUrl: 'partials/thanks',
-		controller: 'mainControl'
-	}).when('/markup' , {
-		templateUrl: 'partials/markup',
-		controller: 'mainControl'
-	})
-	.otherwise({redirectTo: '/'})
+	}).otherwise({redirectTo: '/'})
 }]);

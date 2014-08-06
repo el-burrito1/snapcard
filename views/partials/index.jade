@@ -1,21 +1,24 @@
-h1 Welcome to the bitcoin page
-p This is where we are going to create an invoice for you to make a payment using bitcoins
-label This is where the user can type in the price 
-	input(type='text' ng-model='invoicePrice')
-p You currently owe ${{invoicePrice}}
-label Please include your name
-	input(type='text' ng-model='name')
-p Your name is {{personName}}
-label Please include a short message
-	input(type='text' ng-model='message')
-button(ng-click='test()')
-button(ng-click='pay()')
-p Your message is as follows {{message}}
-p The page must display a <strong>new wallet </strong> and <strong>QR code</strong> on each transaction
-p Let's go!
-p Include a BTC/USD exchange rate
-p If a user pays a specific amount, it will need to update the total outstanding price of the invoice
-p Invoice needs to have three states
-	li Expired
-	li Partially paid (must display outstanding balance)
-	li Invoice paid
+div(class='row' ng-init='exchangeRate()')
+	div(class='col-md-4 center-col' ng-hide='expired')
+		h1(class='pageTitle') Bitcoin Invoice
+		div(class='text-center')
+			qrcode(class='qr' data='bitcoin:{{token}}?amount={{btc}}' size='200')
+			div(class='before' ng-hide='partial || full')
+				label Amount BTC:    
+					input(type='text' ng-model='btc' style='margin-left:30px')
+				br
+				label Amount USD:           
+					input(type='text' value='${{btc * exchangeRate}}' style='margin-left:31px')
+				br
+				br
+				span Invoice Amount: {{invoiceAmount}}BTC
+				br
+				span Current Rate: 1BTC/${{exchangeRate}}USD
+			div(class='partialPay' ng-show='partial')
+				h3 Partially paid. You still owe {{10-btc}} BTC.
+			div(class='fullPay' ng-show='full')
+				h3 You have paid in full. Thank you. 
+		div(class='text-center' ng-hide='partial || full')
+			button(type='button' class='btn center-btn' ng-click='getAddress();showQR()') CREATE PAYMENT INVOICE
+	div(class='col-md-4 center-col' ng-show='expired')
+		h1(class='pageTitle') I'm sorry but this session has expired, please refresh the page to make a payment.
