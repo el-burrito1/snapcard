@@ -17,7 +17,7 @@ angular.module('myApp.controllers' , []).
 		  	$scope.exchangeRate = (parseFloat(response.data.btc_to_usd)).toFixed(2);
 		  },
 		  function(data,status,headers,config){
-		      console.log('failure');
+		      console.log('error');
 		  });
 
 		$scope.getAddress = function(){
@@ -25,14 +25,14 @@ angular.module('myApp.controllers' , []).
 			var callBack = 'http://snapcardinvoice.herokuapp.com/#/thanks'
 			$http({method:'GET' , url:'https://blockchain.info/api/receive?method=create&address=' + address + '&callback=' + callBack}).
 			success(function(data,status,headers,config){
-				console.log(data)
+				console.log('success')
 				$scope.token = data.input_address;
 			}).
 			error(function(data,status,headers,config){
-				console.log(data)
+				console.log('error')
 			})
 
-		}
+		};
 
 		$scope.showQR = function(){
 			$('.qr').addClass('show');
@@ -45,9 +45,14 @@ angular.module('myApp.controllers' , []).
 
 		var expire = function(){
 			$timeout(function(){
-				$scope.expired = true;
+				if($scope.partial == false && scope.full == false){
+					$scope.expired = true;
+				} else {
+					$scope.expired = false;
+				}
+
 			},30000)
-		}
+		};
 
 		expire();
 
