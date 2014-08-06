@@ -56,7 +56,7 @@ angular.module('myApp.controllers' , []).
 			},30000)
 		};
 
-		// expire();
+		expire();
 
 
 	}])
