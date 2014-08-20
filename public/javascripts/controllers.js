@@ -4,7 +4,6 @@ angular.module('myApp.controllers' , []).
 	controller('mainControl' , ['$scope' , '$http' , '$timeout' , function($scope , $http , $timeout){
 
 		window.scope = $scope;
-		$scope.expired = false;
 		$scope.partial = false;
 		$scope.full = false;
 		$scope.load = true;
@@ -44,19 +43,6 @@ angular.module('myApp.controllers' , []).
 				$scope.full = true;
 			}
 		};
-
-		var expire = function(){
-			$timeout(function(){
-				if($scope.partial == false && scope.full == false){
-					$scope.expired = true;
-				} else {
-					$scope.expired = false;
-				}
-
-			},30000)
-		};
-
-		expire();
 
 
 	}])
